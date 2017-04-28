@@ -1,7 +1,6 @@
 #include "env_posix.cc"
 
 extern "C" {
-#include "rte_log.h"
 #include "spdk/env.h"
 #include "spdk/event.h"
 #include "spdk/blob.h"
@@ -423,7 +422,6 @@ initialize_spdk(void *arg)
 {
 	struct spdk_app_opts *opts = (struct spdk_app_opts *)arg;
 
-	rte_set_log_level(RTE_LOG_ERR);
 	spdk_app_init(opts);
 
 	spdk_app_start(spdk_rocksdb_run, NULL, NULL);

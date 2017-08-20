@@ -4934,7 +4934,7 @@ int db_bench_tool(int argc, char** argv) {
   FLAGS_rep_factory = StringToRepFactory(FLAGS_memtablerep.c_str());
 
   if (!FLAGS_spdk.empty()) {
-    NewSpdkEnv(&FLAGS_env, FLAGS_db, FLAGS_spdk, FLAGS_spdk_bdev, FLAGS_spdk_cache_size);
+    FLAGS_env = NewSpdkEnv(FLAGS_env, FLAGS_db, FLAGS_spdk, FLAGS_spdk_bdev, FLAGS_spdk_cache_size);
     if (FLAGS_env == NULL) {
       fprintf(stderr, "Could not load SPDK blobfs - check that SPDK mkfs was run "
 		      "against block device %s.\n", FLAGS_spdk_bdev.c_str());
